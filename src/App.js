@@ -196,7 +196,7 @@ render(){
     <br/>
     {/* <Route exact path="/" exact component ={LoginPage2} /> */}
     <Route
-  exact path='/'
+  exact path='/welcome'
   render={(props) => (
     // <CreateSession {...props} testClient={0>2 ?  "Brian": "Tom" } />
     <LoginPage2 {...props} currentUserUpdater={this.currentUserUpdater} />
