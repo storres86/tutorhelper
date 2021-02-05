@@ -35,7 +35,8 @@ function LoginPage({currentUserUpdater}){
      userid: Number(Math.round((Math.random() * (10000 -1)+ 1) ))
   
   }
-  axios.post("http://localhost:5000/users/add", userData, {withCredentials: true})
+  // axios.post("http://localhost:5000/users/add", userData, {withCredentials: true})
+  axios.post("https://storres86.github.io/users/add", userData, {withCredentials: true})
   //  .then(res => console.log(res.data))
   .then(alert("Thank you for joining!"))
   window.location ="/createSession"
@@ -59,7 +60,8 @@ function LoginPage({currentUserUpdater}){
         password: loginPassword
         }
         resolve(
-      axios.post("http://localhost:5000/users/login", data, {withCredentials: true})
+      // axios.post("http://localhost:5000/users/login", data, {withCredentials: true})
+      axios.post("https://storres86.github.io/users/login", data, {withCredentials: true})
     .then((res) => console.log(res))
         )
         reject(console.log("login promise did not work"))
@@ -68,7 +70,8 @@ function LoginPage({currentUserUpdater}){
   
   function getUser(){
     return new Promise((resolve,reject) => {
-      axios.get("http://localhost:5000/users/locker", {withCredentials: true} )
+      // axios.get("http://localhost:5000/users/locker", {withCredentials: true} )
+      axios.get("https://storres86.github.io/users/locker", {withCredentials: true} )
       .then((res) => {
         if (res.data.username){
           resolve(

@@ -57,8 +57,10 @@ async componentDidMount() {
 
   // Make requests
   const [firstResponse, secondResponse,] = await Promise.all([
-    axios.get(`http://localhost:5000/users/locker`,{withCredentials: true}),
-    axios.get("http://localhost:5000/clients/"),
+    // axios.get(`http://localhost:5000/users/locker`,{withCredentials: true}),
+    // axios.get("http://localhost:5000/clients/"),
+    axios.get(`https://storres86.github.io/users/locker`,{withCredentials: true}),
+    axios.get("https://storres86.github.io/clients/"),
   ]);
 
   // Update state once with all 3 responses
@@ -77,7 +79,8 @@ async componentDidMount() {
 
 
 clientIdGrabber(){
-axios.get("http://localhost:5000/clients/")
+// axios.get("http://localhost:5000/clients/")
+axios.get("https://storres86.github.io/clients/")
 .then(response => {
   let x = response.data.filter(client => client.clientFullName == this.state.currentClient )
   let y = x[0].clientFullName
@@ -140,13 +143,14 @@ onSubmit(e){
   }
   console.log(newSessionDataPackage);
   
-  axios.post("http://localhost:5000/sessions/add", newSessionDataPackage)
+  // axios.post("http://localhost:5000/sessions/add", newSessionDataPackage)
+  axios.post("https://storres86.github.io/sessions/add", newSessionDataPackage)
   .then(alert("A new session has been added"))
 
   // .catch(alert("Error: 400, failed to add session"))
 
-  // window.location = "/"
-  this.props.history.push("/history")
+  window.location = "/history"
+  // this.props.history.push("/history")
 }
 
 editClientLink(){

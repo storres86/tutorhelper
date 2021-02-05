@@ -22,7 +22,8 @@ export default class CreateClient extends Component {
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:5000/users/locker`,{withCredentials: true})
+        // axios.get(`http://localhost:5000/users/locker`,{withCredentials: true})
+        axios.get(`https://storres86.github.io/users/locker`,{withCredentials: true})
         .then(response => {
             this.setState({
                 // id: response.data._id,
@@ -90,12 +91,13 @@ export default class CreateClient extends Component {
         console.log(this.state.clientFullName);
         
 
-        axios.post("http://localhost:5000/clients/add",newClientData)
+        // axios.post("http://localhost:5000/clients/add",newClientData)
+        axios.post("https://storres86.github.io/clients/add",newClientData)
         .then(res => console.log(res.data))
 
         // console.log(newClientData);
 
-        window.location = "/"
+        window.location = "/history"
     }
 
 render(){

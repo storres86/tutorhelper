@@ -38,9 +38,10 @@ export default class Navbar extends Component {
 // }
 
    loggedoutnow = () =>{
-    axios.get("http://localhost:5000/users/logout",  { withCredentials: true })
+    // axios.get("http://localhost:5000/users/logout",  { withCredentials: true })
+    axios.get("https://storres86.github.io/users/logout",  { withCredentials: true })
     .then(alert("You have logged out. "))
-    .then(window.location = "/")
+    .then(window.location = "/tutorhelper")
     
   }
 

@@ -28,7 +28,8 @@ export default class SessionList extends Component {
     
 
 componentDidMount(){
-    axios.get("http://localhost:5000/sessions/")
+    // axios.get("http://localhost:5000/sessions/")
+    axios.get("https://storres86.github.io/sessions/")
     .then(response => {
     this.setState({sessions: response.data})
     })
@@ -48,7 +49,8 @@ showSessionList(){
 
 sessionPaidUpdater(id){
     // console.log("poop")
-    axios.get("http://localhost:5000/sessions/"+id)
+    // axios.get("http://localhost:5000/sessions/"+id)
+    axios.get("https://storres86.github.io/sessions/"+id)
     .then(res => {
         // console.log(res.data.currentClient);
             const tempuser = res.data.user;
@@ -72,7 +74,8 @@ sessionPaidUpdater(id){
                   sessionPaid: true,  
                 }
                 console.log(testdata);
-                axios.post("http://localhost:5000/sessions/update/"+id, testdata)
+                // axios.post("http://localhost:5000/sessions/update/"+id, testdata)
+                axios.post("https://storres86.github.io/sessions/update/"+id, testdata)
                 .then(window.location = "/createSession")
             })
     }
@@ -80,7 +83,8 @@ sessionPaidUpdater(id){
     deleteSession(id){
         let confirmation = window.confirm("Please confirm you would like to delete this sessions.")
         if (confirmation === true){
-            axios.delete("http://localhost:5000/sessions/"+id)
+            // axios.delete("http://localhost:5000/sessions/"+id)
+            axios.delete("https://storres86.github.io/sessions/"+id)
             .then(res => console.log(res.data));
             this.setState({
                 sessions: this.state.sessions.filter(el => el._id !== id)

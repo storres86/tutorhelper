@@ -26,7 +26,8 @@ export default class EditClient extends Component{
     }
 
     componentDidMount(){
-        axios.get("http://localhost:5000/clients/" +this.props.match.params.id)
+        // axios.get("http://localhost:5000/clients/" +this.props.match.params.id)
+        axios.get("https://storres86.github.io/clients/" +this.props.match.params.id)
         .then(response => {
             this.setState({
                 // id: response.data._id,
@@ -85,7 +86,8 @@ onChangeFirstName(e){
           console.log("delete client ran");
           let confirmation = window.confirm("Please confirm that you would like to delete this client")
           if (confirmation === true){
-              axios.delete("http://localhost:5000/clients/"+id)
+            //   axios.delete("http://localhost:5000/clients/"+id)
+            axios.delete("https://storres86.github.io/clients/"+id)
               .then(res => console.log(res.data));
               window.location = "/"
             
@@ -113,8 +115,9 @@ onChangeFirstName(e){
         let confirmation = window.confirm("Please confirm that you would like to update this client")
 
         if (confirmation === true){
-            axios.post("http://localhost:5000/clients/update/"+this.props.match.params.id,newClientData)
-            .then(this.props.history.push("/history"))
+            // axios.post("http://localhost:5000/clients/update/"+this.props.match.params.id,newClientData)
+            axios.post("https://storres86.github.io/clients/update/"+this.props.match.params.id,newClientData)
+            .then(window.location="/history")
         } else {
             // window.location = "/editClient/"+this.props.match.params.id
             this.props.history.push("/editClient/"+this.props.match.params.id)

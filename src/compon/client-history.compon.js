@@ -72,9 +72,13 @@ async componentDidMount() {
 
     // Make requests
     const [firstResponse, secondResponse, thirdResponse] = await Promise.all([
-      axios.get(`http://localhost:5000/users/locker`,{withCredentials: true}),
-      axios.get("http://localhost:5000/clients/"),
-      axios.get("http://localhost:5000/sessions/")
+    //   axios.get(`http://localhost:5000/users/locker`,{withCredentials: true}),
+    //   axios.get("http://localhost:5000/clients/"),
+    //   axios.get("http://localhost:5000/sessions/")
+    axios.get(`https://storres86.github.io/users/locker`,{withCredentials: true}),
+    axios.get("https://storres86.github.io/clients/"),
+    axios.get("https://storres86.github.io/sessions/")
+
     ]);
   
     // Update state once with all 3 responses
@@ -110,7 +114,8 @@ showSessionList(){
 deleteSession(id){
 let confirmation = window.confirm("Please confirm you would like to delete this sessions.")
 if (confirmation === true){
-    axios.delete("http://localhost:5000/sessions/"+id)
+    // axios.delete("http://localhost:5000/sessions/"+id)
+    axios.delete("https://storres86.github.io/sessions/"+id)
     .then(res => console.log(res.data));
     this.setState({
         sessions: this.state.sessions.filter(el => el._id !== id)
@@ -122,17 +127,18 @@ if (confirmation === true){
 
 sessionPaidUpdater(id){
 // console.log("poop")
-axios.get("http://localhost:5000/sessions/"+id)
+// axios.get("http://localhost:5000/sessions/"+id)
+axios.get("https://storres86.github.io/sessions/"+id)
 .then(res => {
     // console.log(res.data.currentClient);
-        const tempuser = this.props.testClient;
-        const tempuserId = this.props.testClientID
+        const tempuser = res.data.user;
+        const tempuserId = res.data.userId;
         const tempcurrentClient = res.data.currentClient;
         const tempsessionLength = res.data.sessionLength;
         const tempstartTime = res.data.startTime;
         // const tempsessionDate = Date.parse(res.data.sessionDate);
         const tempsessionDate = new Date(res.data.sessionDate)
-        // const tempsessionPaid = res.data.sessionPaid; 
+        const tempsessionPaid = res.data.sessionPaid; 
         // console.log(tempsessionPaid);
         
        
@@ -146,8 +152,9 @@ axios.get("http://localhost:5000/sessions/"+id)
               sessionPaid: true,  
             }
             console.log(testdata);
-            axios.post("http://localhost:5000/sessions/update/"+id, testdata)
-            .then(window.location = "/")
+            // axios.post("http://localhost:5000/sessions/update/"+id, testdata)
+            axios.post("https://storres86.github.io/sessions/update/"+id, testdata)
+            .then(window.location = "/history")
         })
 }
 

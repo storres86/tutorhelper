@@ -30,8 +30,10 @@ async componentDidMount() {
 
   // Make requests
   const [firstResponse, secondResponse] = await Promise.all([
-    axios.get("http://localhost:5000/users/locker", {withCredentials: true}),
-    axios.get("http://localhost:5000/sessions/" + this.props.match.params.id)
+    // axios.get("http://localhost:5000/users/locker", {withCredentials: true}),
+    // axios.get("http://localhost:5000/sessions/" + this.props.match.params.id)
+    axios.get("https://storres86.github.io/users/locker", {withCredentials: true}),
+    axios.get("https://storres86.github.io/sessions/" + this.props.match.params.id)
   ]);
 
   // Update state once with all responses
@@ -89,7 +91,8 @@ onChangeClient(e){
     }
     console.log(newSessionDataPackage);
     
-    axios.post("http://localhost:5000/sessions/update/"+this.props.match.params.id, newSessionDataPackage)
+    // axios.post("http://localhost:5000/sessions/update/"+this.props.match.params.id, newSessionDataPackage)
+    axios.post("https://storres86.github.io/sessions/update/"+this.props.match.params.id, newSessionDataPackage)
     .then(alert("Session has been updated"))
     // .then(<Redirect to='/history' />)
     // .then(alert("Thank you for your time"))
@@ -110,7 +113,7 @@ render(){
         <div>
 <form onSubmit={this.onSubmit}>
     <h3>Edit Session {this.state.user} | {this.state.userId}</h3>
-    <label>Client:</label>
+    {/* <label>Client:</label>
     <select required value={this.state.currentClient} onChange={this.onChangeClient}>
     <option key="default" value="default">Pick New Client</option>
     {this.state.clients.map(function(client){
@@ -118,7 +121,7 @@ render(){
     {client}
     </option>
     })}
-    </select>
+    </select> */}
 <br/>
     <label>Pick New TimeFrame:</label>
     <select required onChange={this.onChangeSessionLength} value={this.state.sessionLength} >
